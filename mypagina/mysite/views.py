@@ -13,3 +13,7 @@ def view_resume(request):
 def view_project(request):
     if request.method == 'GET':
         return render(request, 'projects.html')
+    
+def view_contacto(request):
+    if request.method == 'GET':
+        return render(request, 'contact.html')
