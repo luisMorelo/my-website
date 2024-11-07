@@ -1,5 +1,5 @@
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect
+from .forms import ContactForm
 # Create your views here.
 
 def my_vista(request):
@@ -16,4 +16,12 @@ def view_project(request):
     
 def view_contacto(request):
     if request.method == 'GET':
-        return render(request, 'contact.html')
+        form = ContactForm()
+        return render(request, 'contact.html', {'form': form})
+    else:
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            new_contact = form.save(commit=False)
+            new_contact.save()
+            return redirect('my vista principal')
+        return render(request, 'contact.html', {'form': form})
