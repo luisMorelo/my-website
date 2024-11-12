@@ -1,9 +1,9 @@
 from django import forms
-from .models import contacto
+from .models import Contacto
 
 #formulario para el modelo contacto 
 class ContactForm(forms.ModelForm):
 
     class Meta:
-        models = contacto
-        fiels = ['nombre', 'correo', 'telephono', 'description']
+        model = Contacto
+        fields = ['nombre', 'correo', 'telephono', 'description']
