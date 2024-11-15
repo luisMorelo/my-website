@@ -37,7 +37,7 @@ def view_contacto(request):
             telephono = request.POST['telephono']
             description = request.POST['description']
 
-            subject = "Nuevo mensaje de contacto desde el formulario"
+            subject = "Nuevo mensaje de contacto desde mi página"
 
             # Crear el contenido del email
             template = render_to_string('correodata.html', {
@@ -58,8 +58,5 @@ def view_contacto(request):
             email.fail_silently = False
             email.send()
 
-            messages.success(request, '¡Enviado con éxito! Muchas gracias, pronto estaremos en contacto.')
-
-            return redirect('contacto')
-
-        return render(request, 'contact.html', {'form': form})
+        return render(request, 'contact.html', {'form': form, 'mensaje': '¡Enviado con éxito! Muchas gracias, pronto estaremos en contacto.' })
+        
